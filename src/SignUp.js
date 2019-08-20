@@ -66,7 +66,7 @@ const useStyles = makeStyles(theme => ({
           <AccountBoxIcon />
           </Avatar>
         <Typography component="h1" variant="h5">
-          Sign up
+          Signup
         </Typography>
 
      
