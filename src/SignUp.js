@@ -19,7 +19,7 @@ function Copyright() {
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
       <Link color="inherit" href="">
-        Malaka Madushan
+        W . Malaka Madushan
       </Link>{' '}
       {/* {new Date().getFullYear()}
       {'. Built with '}
