@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
+import axios from "axios"
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -56,27 +57,27 @@ const useStyles = makeStyles(theme => ({
 
 
 // login data passed for backend
-//  saveUserInfo = () => {
-//   let userInfoJson = {
-//       email:'abc@gmail.com',
-//       password:123,
-//       // orderType:'cash'
-//   };
-//   let resourceUrl = 'http://127.0.0.1:5000/user2' ;
-//   let axiosConfig = {
-//       headers: {
-//           'Content-Type': 'application/json;charset=UTF-8',
-//           "Access-Control-Allow-Origin": "*",
-//       }
-//   };
-//   axios.post(resourceUrl, userInfoJson, axiosConfig)
-//       .then((res) => {
-//           console.log("Received response,",res);
-//       })
-//       .catch((err) => {
-//               console.log('post Request canceled');
-//       });
-// };
+const saveUserInfo = () => {
+  let userInfoJson = {
+    email: 'abc@gmail.com',
+    password: 123,
+    // orderType:'cash'
+  };
+  let resourceUrl = 'http://127.0.0.1:5000/user2';
+  let axiosConfig = {
+    headers: {
+      'Content-Type': 'application/json;charset=UTF-8',
+      "Access-Control-Allow-Origin": "*",
+    }
+  };
+  return axios.post(resourceUrl, userInfoJson, axiosConfig)
+    .then((res) => {
+      console.log("Received response,", res);
+    })
+    .catch((err) => {
+      console.log('post Request canceled');
+    });
+};
 
 
 
@@ -89,10 +90,10 @@ export default function LoginIn() {
       <CssBaseline />
       <div className={classes.paper}>
         {/* <Avatar className={classes.avatar}> */}
-          <AccountBoxIcon />
+        <AccountBoxIcon />
         {/* </Avatar> */}
         <Typography component="h1" variant="h5">
-          Login 
+          Login
         </Typography>
         <form className={classes.form} noValidate>
           <TextField
@@ -122,11 +123,11 @@ export default function LoginIn() {
             label="Remember me"
           />
           <Button
-            type="submit"
             fullWidth
             variant="contained"
             color="primary"
             className={classes.submit}
+            onClick={saveUserInfo}
           >
             Sign In
           </Button>
