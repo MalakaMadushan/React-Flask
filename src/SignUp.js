@@ -12,6 +12,7 @@ import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import axios from "axios";
 
 
 function Copyright() {
@@ -29,6 +30,37 @@ function Copyright() {
     </Typography>
   );
 }
+
+// login data passed for backend
+const saveUserInfo2 = () => {
+  let userInfoJson2 = {
+      firstname:'malaka',
+      lastname: 'madushan',
+      email:'abc@gmail.com',
+      password:123,
+      // orderType:'cash'
+  };
+  let resourceUrl = 'http://127.0.0.1:5000/user2' ;
+  let axiosConfig = {
+      headers: {
+          'Content-Type': 'application/json;charset=UTF-8',
+          "Access-Control-Allow-Origin": "*",
+      }
+  };
+  return axios.post(resourceUrl, userInfoJson2, axiosConfig)
+      .then((res) => {
+          console.log("Received response,",res);
+      })
+      .catch((err) => {
+              console.log('post Request canceled');
+      });
+};
+
+
+
+
+
+
 
 const useStyles = makeStyles(theme => ({
   '@global': {
@@ -63,8 +95,8 @@ const useStyles = makeStyles(theme => ({
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
-          <AccountBoxIcon />
-          </Avatar>
+        <AccountBoxIcon />
+        </Avatar>
         <Typography component="h1" variant="h5">
           Signup
         </Typography>
@@ -132,6 +164,7 @@ const useStyles = makeStyles(theme => ({
             variant="contained"
             color="primary"
             className={classes.submit}
+            onClick={saveUserInfo2}
           >
             Sign Up
           </Button>
